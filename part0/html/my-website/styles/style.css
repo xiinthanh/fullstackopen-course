@@ -1,0 +1,36 @@
+html {
+    font-size: 16px;
+    font-family: "Bitcount", system-ui;
+    background-color: #00539f;
+}
+
+body {
+    width: 600px;
+    margin: 0 auto;
+    background-color: #ff9500;
+    padding: 0 20px 20px 20px;
+    border: 5px solid black;
+}
+
+h1 {
+    font-size: 2.5rem;
+    text-align: center;
+
+    margin: 0;
+    padding: 20px 0;
+    color: #00539f;
+    text-shadow: 3px 3px 1px black;
+}
+
+img {
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+}
+
+p,
+li {
+    font-size: 1.125rem;
+    line-height: 1.5;
+    letter-spacing: 1px;
+}
