@@ -18,23 +18,40 @@ const History = (props) => {
 const Button = ({ onClick, text }) => <button onClick={onClick}>{text}</button>;
 
 const App = () => {
-  const [value, setValue] = useState(10)
+  const [clicks, setClicks] = useState({
+    left: 0, right: 0
+  });
+  const [allClicks, setAll] = useState([]);
+  const [total, setTotal] = useState(0);
 
+  const handleLeftClick = () => {
+    setAll(allClicks.concat('L'));
+    const updatedLeft = clicks.left + 1;
 
-  const hello = (who) => {
-    const handler = () => {
-      console.log('hello', who)
-    }
-    return handler
+    setClicks({ ...clicks, left: updatedLeft });
+    setTotal(updatedLeft + clicks.right);
   }
+
+  const handleRightClick = () => {
+    setAll(allClicks.concat('R'));
+    const updatedRight = clicks.right + 1;
+
+    setClicks({ ...clicks, right: updatedRight });
+    setTotal(clicks.left + updatedRight);
+  }
+
 
   return (
     <div>
-      {value}
-
-      <button onClick={hello('world')}>button</button>
-      <button onClick={hello('react')}>button</button>
-      <button onClick={hello('function')}>button</button>
+      {clicks.left}
+      <Button onClick={handleLeftClick} text="left" />
+      <Button onClick={handleRightClick} text="right" />
+      {clicks.right}
+      <History allClicks={allClicks} />
+      <p>{total}</p>
+      <button onClick={() => console.log('clicked the button')}>
+        button
+      </button>
     </div>
   )
 }
