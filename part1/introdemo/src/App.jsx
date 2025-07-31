@@ -10,15 +10,22 @@ const App = () => {
     left: 0, right: 0
   });
   const [allClicks, setAll] = useState([]);
+  const [total, setTotal] = useState(0);
 
   const handleLeftClick = () => {
-    setClicks({ ...clicks, left: clicks.left + 1 });
     setAll(allClicks.concat('L'));
+    const updatedLeft = clicks.left + 1;
+
+    setClicks({ ...clicks, left: updatedLeft });
+    setTotal(updatedLeft + clicks.right);
   }
 
   const handleRightClick = () => {
-    setClicks({ ...clicks, right: clicks.right + 1 });
     setAll(allClicks.concat('R'));
+    const updatedRight = clicks.right + 1;
+
+    setClicks({ ...clicks, right: updatedRight });
+    setTotal(clicks.left + updatedRight);
   }
 
   return (
@@ -28,6 +35,7 @@ const App = () => {
       <button onClick={handleRightClick}>right</button>
       {clicks.right}
       <p>{allClicks.join(' ')}</p>
+      <p>{total}</p>
     </div>
   )
 }
