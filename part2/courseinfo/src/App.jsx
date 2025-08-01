@@ -15,13 +15,13 @@ const Part = (props) => (
 )
 
 const Total = (props) => {
-  let totalExercises = 0;
-  props.parts.map((part) => {
-    totalExercises += part.exercises;
-  })
-  return (
+  const total = props.parts.reduce((s, p) => {
+    console.log(s, p)
+    return s + p.exercises
+  }, 0)
+    return (
     <p style={{ fontWeight: 'bold' }}>
-      total of {totalExercises} exercises
+      total of {total} exercises
     </p>
   )
 }
